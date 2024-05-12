@@ -86,7 +86,7 @@ class SnakeGameAI: # agent controlled game
         # 3. check if game over
         reward = 0
         game_over = False
-        if self._is_collision() or self.frame_iteration > 100*len(self.snake): # if snake does nothing for too long 
+        if self.is_collision() or self.frame_iteration > 100*len(self.snake): # if snake does nothing for too long 
             game_over = True
             reward = -10
             return reward, game_over, self.score
@@ -105,7 +105,7 @@ class SnakeGameAI: # agent controlled game
         # 6. return game over and score
         return reward, game_over, self.score
     
-    def _is_collision(self, pt=None):
+    def is_collision(self, pt=None):
         if pt is None:
             pt = self.head
         # hits boundary
